@@ -2,6 +2,12 @@
 
 Rails app generator based on @revans project at https://github.com/revans/falken
 
+# Directions
+
+Create a new app like this:
+
+    $ rails new my_awesome_app -m https://raw.github.com/eruva/godspeed/master/godspeed.rb
+
 # Opening Questions
 * Mongo?
 * Haml?
@@ -11,7 +17,6 @@ Rails app generator based on @revans project at https://github.com/revans/falken
 * Unicorn?
 * Sorcery?
 * Devise?
-* 960.gs?
 
 # Included gems
 
@@ -35,9 +40,3 @@ Rails app generator based on @revans project at https://github.com/revans/falken
 
 ## Test & Development
 * pry-rails
-
-## Assets
-* sass-rails
-* coffee-rails
-* compass-rails
-* uglifier

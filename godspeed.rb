@@ -27,7 +27,6 @@ heroku  = yes? 'Deploying to Heroku?'
 unicorn = yes? 'Would you like to use Unicorn? (thin is the default)'
 sorcery = yes? 'Would you like to use Sorcery?'
 devise = yes? 'Would you like to use Devise instead?' unless sorcery
-nine_sixty = yes? 'Would you like to use the 960 grid system?'
 
 if database
   username = ask "Choose a database username: "
@@ -106,7 +105,6 @@ test    = %w(factory_girl_rails database_cleaner capybara guard guard-spork guar
 default = %w()
 dev     = %w(foreman letter_opener sextant thin)
 testdev = %w(pry-rails)
-assets = %w(sass-rails coffee-rails compass-rails uglifier)
 production = %w()
 
 unicorn ? production.push("unicorn") : production.push("thin")
@@ -118,7 +116,6 @@ default.push("devise")  if devise
 default.push("sorcery") if sorcery
 test.push("rspec-rails")                                              if rspec
 test.push('minitest', 'turn') if minitest
-assets.push("compass-960-plugin") if nine_sixty
 
 def gem_setup(gems, indent=true)
   tab = indent ? "\t" : ''
@@ -128,10 +125,6 @@ end
 append_to_file "Gemfile", <<-FILE
 
 #{gem_setup(default, false)}
-
-group :assets do
-#{gem_setup(assets)}
-end
 
 group :production do
 #{gem_setup(production)}
@@ -152,8 +145,9 @@ FILE
 
 ##################################################################################
 # Run Bundle install and Package the gems
-run "bundle install --without=production --path vendor"
-run "bundle package"
+# run "bundle install --without=production --path vendor"
+# run "bundle package"
+run "bundle install --without=production"
 
 
 ##################################################################################
